@@ -14,7 +14,6 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-
 //Carga modelo 3D Wolf
 const gltfLoader = new THREE.GLTFLoader();
 gltfLoader.load('../Imagenes/kawaii_roxanne_wolf/Wolf.gltf',
@@ -31,6 +30,24 @@ gltfLoader.load('../Imagenes/kawaii_roxanne_wolf/Wolf.gltf',
     console.log(error);
 }
 ); 
+
+//Carga modelo 3D Racoon
+gltfLoader.load('../Imagenes/racoon_cartoon_style/Racoon.gltf',
+(gltf) =>{
+    var loaderObjeto2 = gltf.scene;
+    loaderObjeto2.scale.set(3,3,3);
+    loaderObjeto2.position.z = 935; 
+    loaderObjeto2.position.y = -7;
+    loaderObjeto2.position.x = 10;
+    scene.add(loaderObjeto2);
+    console.log('carga completa');
+}, ()=>{
+    console.log('cargando');
+}, ()=>{
+    console.log(error);
+}
+); 
+
 //Carga modelo 3D Monster
 gltfLoader.load('../Imagenes/monster_-_day_18_-_3december/scene.gltf',
 (gltf) =>{
@@ -47,20 +64,21 @@ gltfLoader.load('../Imagenes/monster_-_day_18_-_3december/scene.gltf',
 }, ()=>{
     console.log(error);
 }
-); 
-//Carga modelo 3D Racoon
-gltfLoader.load('../Imagenes/racoon_cartoon_style/Racoon.gltf',
+);
+
+ //Carga modelo 3D Basurero
+gltfLoader.load('../Imagenes/garbage_can_-_stylized/scene.gltf',
 (gltf) =>{
-    var loaderObjeto2 = gltf.scene;
-    loaderObjeto2.scale.set(3,3,3);
-    loaderObjeto2.position.z = 935; 
-    loaderObjeto2.position.y = -7;
-    loaderObjeto2.position.x = 10;
-    scene.add(loaderObjeto2);
+    var loaderObjeto4 = gltf.scene;
+    loaderObjeto4.scale.set(8,8,8)
+    loaderObjeto4.position.z = 900; 
+    loaderObjeto4.position.y = -29;
+    loaderObjeto4.position.x =-35;
+    scene.add(loaderObjeto4);
     console.log('carga completa');
 
-    //Dragcontrols
- let objects = [sphere,sphere1,sphere2,sphere3,sphere4,sphere5,sphere6]
+        //Dragcontrols
+ let objects = [sphere,sphere1,sphere2,sphere3,sphere4,sphere5,sphere6, loaderObjeto4]
 
  const DragControls = new THREE.DragControls( objects, camera, renderer.domElement );
  DragControls.enabled = true;
